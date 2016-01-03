@@ -1,0 +1,97 @@
+v10.20.2015: 20151020T15:11:00MDT ell
+0) Begin work on adding in wind vector fields for directionality.
+a) Read in U/V raster surfaces. 
+b) Calculate resultant vector for edges in the 8 directions of node, then new resultant 'wind speed' becomes the 'cost' in that direction. Higher is more probable. Worry about post-hoc probability conversions later. 
+c) WindDirection NWeight graph now. Next find the longest path for wind direction. Still issue with traveling upstream wind direction. Some rule to stop that direction? Speed ever 0? Largest speed is not going to work in reverse, will find unrealistic path around edge for example.
+d) Calculate maximum speed, irregardless of NAN locations - for every phi. Then maximum speed neighbor becomes 1, rest nan. Then go back and replace with nan scenarios. This should stop edge .
+e) Use math direction, assume U and V already converted this.http://wx.gmu.edu/dev/clim301/lectures/wind/wind-uv.html
+f) Paths will most likely never connect with just one direction restriction. Need to include probabilities. 
+g) Given angle (wind_dir), then keep atan2 - or + angle.
+for wind_dir + 180 (counterclockwish): prob = (-1/180)*(x - wind_dir) +1
+for wind_dir - 180 (clockwise): prob = (1/180)*(x-wind_dir) + 1
+careful of signs...
+h) special cases for signs. 1 - prob_wind for tracing LCP. 
+G) return both cost path that the 1 - probwind followed. Results returning very low probs. Try nearest neighbor, give value of 1, all other neighbors value of 2? 
+i) If wind dirtype, return both wind cost and resistance cost; paths add in pathlens and pathcond
+j) add in wind resistance with distance calculation, this is also asymmetric. TO pathadds lower matrix, FROM pathadd upper matrix. 
+h) Update U/V direction - not maths, but meterological. 
+k) weight 8 in opposite direction instead of nan
+l) return weights added, not distance * weights.
+j) in 8 directions, calculate resultant vector or tan. 0 in same direction to 1 in opposite direction, then add 1 or scale this by wind magnitude. 
+--------------------------------------------------------------------
+calculation
+1) Give Vc and Uc
+Vc = ws*sin(theta)
+Uc = ws*cos(theta)
+2) for each 8 neighbor: phi:315, 0, 45, 270, 90, 225, 180, 135, 
+math phi = 135,90,45,180,0,225,270,315
+convert to radians: phi * pi / 180 = phi_rads
+3) Calculate
+Vd = sin(phi_rads) 
+Ud = cos(phi_rads)
+4) Get resultant 
+U = Uc + Ud
+V = Vc + Vd
+5) Get speed in that direction
+WS = sqrt(U**2 + V**2)
+
+example:
+r2d = 45.0/atan(1.0)     ; conversion factor (radians to degrees)
+    
+    u   =  10.0
+    v   =  10.0
+    dir = atan2(u, v) * r2d + 180   ; ===> dir = 225.0
+
+
+v08.11.2015: 20150811T13:56:00MDT ell
+0) Begin add in conductance option. 
+a) Create graph of conductance values. 
+b) Ignore cellsize 
+c) then multiply instead of add for path lengths. 
+d) Add Use_Resistance option
+
+
+v07.21.2015: 20150721T15:19:00MDT ell
+0) Begin partial barrier work. 
+a) Create test dataset
+b) Make -128 as a complete barrier; do error checks for NAvalue nmber
+c) Switch logic in code for -128 first
+d) Incorporate rastervalues_barr in place of rastervalues. Special case if on a barrier (any value greater than 1) use a values of 1 (or the minumu of the raster_barr (not NA). 
+e) Assume passage downstream, anywhere there is a partial barrier, same as case above, use the min value of the raster in replace of partial resistance in downstream direction.
+f) Get parallel working with direction
+
+
+
+v 07.16.2015
+0) Create new version. Try to run with upper and lower visited paths. Run twice. 
+1) Update nWeightPairs for directionans == TRUE, remove if irow icol at -9999, still calculate neighbors. This was causing paths to stop before, I think. 
+2) Might have to use replace values for -9999 NA values, test first.
+3) Checking xIndex and yIndex, doesn't seem to be grabbing the correct nWeightPairs start value.
+4) Error in path lengths with regular no direction, off one cell, thus trying to calculate in -9999 area. Test with nan instead of replace value. Yvalues yrastloc, off 100? Error in raster file header information...*fixed.
+5) Test runs work. Running on full extent. 
+6) Error with linux and parallel processor, made switch to run single processor in linux.
+7) Found duplicate points, want to include this now, test.
+8) Error when duplicate points in calcOutputs *fixed
+9) Error in calcOutputs with None Types *Fixed
+10) Testing Asymetrical distance on BT data...
+11) Add duplicate points fix for both directionans. FALSE only at this point, TRUE error statement, work on in future.
+
+
+Continue...2015.07.15T09:25:00MDT (ell)
+0) Directional testing continued.
+a) First check complete barriers: 
+b) added 'path' to _reverse calculation
+c) Create a special case for if on a barrier? If on a barrier elevation can be equal or less in cells around. If this happens then causes a 2-way barrier. DEM should be cautioned when using. Really need flow accumulation rasters.
+
+v 11.04.2014 -> 2015.05.26.T15:27:00PDT (ell)
+0) Begin directional cost work. 
+a) In .rip file create 3 more lines: Use_Direction, BarrierFilename, ElevationFilename.
+b) Create _rev variables if directionans
+c) Track forward and reverse paths...
+d) in RasterToBarrierDirection, place nan in locations can not go. Not sure what Dijkstras will do with these just yet. 
+e) Replace elevation file with flow accumulation file.
+f) only do direction or not.
+g) Switch for elevation logic or flowacc logic.
+h) Create_Permeability option only for directional work. ??Not yet
+i) Instead of nan, replace with maximum barrier value?
+

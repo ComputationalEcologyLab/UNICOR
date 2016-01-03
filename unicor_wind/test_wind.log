@@ -1,0 +1,29 @@
+
+UNICOR Release 2015-10-20T13:20:00MDT Version 2.5
+
+Author(s): E.L. Landguth, B.K. Hand, J.M. Glassy
+
+Session runtime inputs from: (wind.rip)
+
+
+Log output directed to     : (test_wind.log)
+G creation run-time: 0:00:00
+
+
+xy points run-time: 0:00:00
+
+
+Unicor does not currently support multi-processing in the windows os, reverting to serial calculations
+
+Printing out every source,destination combination at 10 percent completetions...
+Printing out every source,destination combination at 10 percent completetions...
+
+Total shortest path calculation run-time: 0:00:00.102000
+
+The file uavg_narr_nrockies_albers.txt_ones.txt_test_wind.csv_asymmetric_WindCost.cdmatrix.csv has been created in: 0:00:00
+
+The file uavg_narr_nrockies_albers.txt_ones.txt_test_wind.csv_asymmetric_WindCost_FROM_.addedpaths.txt has been created in: 0:00:00.001000
+
+The file uavg_narr_nrockies_albers.txt_ones.txt_test_wind.csv_asymmetric_WindCost_TO_.addedpaths.txt has been created in: 0:00:00.002000
+
+Total UNICOR program run-time: 0:00:00.230000

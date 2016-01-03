@@ -1,0 +1,18 @@
+ED_Distance 5000
+Use_ED_threshold FALSE
+Number_of_Categories 5
+KDE_GridSize 2
+Save_IndividualPaths_Output FALSE
+Edge_Distance max
+Number_of_Processes 2
+Save_Category_Output FALSE
+KDE_Function Gaussian
+Save_CDmatrix_Output TRUE
+Save_GraphMetrics_Output FALSE
+Session_label Ha_type
+Save_KDE_Output FALSE
+XY_Filename Ha_XY.csv
+Grid_Filename tree100perlandscape/Ha_tree_100_1_100.asc
+Save_Path_Output False
+n u l l
+n u l l
