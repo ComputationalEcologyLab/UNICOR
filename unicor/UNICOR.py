@@ -263,6 +263,9 @@ def main(ripFilePath):
 			vol_constant,nbhd_dist,True)
 		
 		else: # If running direction
+			if edge_type != 'normal':
+				print('Direction not working with edge_type option threshold yet.')
+				sys.exit(-1)
 			tupSpaths_lower = serial_paths(logfHndl,nopoints,stringpts,visited_lower,EDthresholdans,nWeightPairs,xvalues,yvalues,pathadd_lower,cd_matrix_lower,paths_lower,edge_type,edge_dist,transform_func,const_kernal_vol,vol_constant,nbhd_dist,resans)
 			
 			stringpts_rev = stringpts[::-1]

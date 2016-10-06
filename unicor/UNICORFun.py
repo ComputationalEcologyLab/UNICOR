@@ -1776,7 +1776,7 @@ def RasterToBarrierDirection(resgrid,elevgrid,barrgrid,dirtype):
 							else: 
 								# If barrier this way too, use replaceval
 								if six_compbarr or six_partbarr:
-									six = (repalcebarrva*2) * midCell
+									six = (replacebarrval*2) * midCell
 									six_xspot = float(xspot)
 									six_yspot = float(yspot-cellsize)
 								# If not a barrier this way
@@ -2828,7 +2828,7 @@ def RasterToBarrierDirection_Conductance(resgrid,elevgrid,barrgrid,dirtype):
 							else: 
 								# If barrier this way too, use replaceval
 								if six_compbarr or six_partbarr:
-									six = (repalcebarrva*2) * midCell
+									six = (replacebarrval*2) * midCell
 									six_xspot = float(xspot)
 									six_yspot = float(yspot-cellsize)
 									six_cond = replacebarrval
@@ -3092,7 +3092,7 @@ def calcOutputs(indexDict,isource,idest,path,nWeightPairs,xvalues,yvalues,pathad
 		
 		# If None path calculated
 		elif len(path) != 0 and path[0] == None:
-			pdb.set_trace()
+			
 			# Then write shortest path len value to matrix
 			cdmatrix[indexDict[isource]][indexDict[idest]] = None
 				
@@ -3395,20 +3395,14 @@ def serial_paths(logfHndl,nopoints,stringpts,visited,EDthresholdans,nWeightPairs
 				yvalues,srclist[i],destlist[i])
 		# If threshold specified as not 'max'
 		elif edge_type == 'threshold':
-			print('Direction not working with edge_type option threshold yet.')
-			sys.exit(-1)
 			path, vOrder,pathlens =Dijkstrathreshold(edge_dist,nWeightPairs,xvalues,\
 			yvalues,srclist[i],destlist[i])	
 		elif edge_type == 'all_paths':
-			print('Direction not working with edge_type option threshold yet.')
-			sys.exit(-1)
 			path =DijkstraAllPaths(edge_dist,nWeightPairs,xvalues,\
 			yvalues,srclist[i])
 		
 		if (len(path) > 0):	
 			if edge_type == 'all_paths':
-				print('Direction not working with edge_type option all_paths yet.')
-				sys.exit(-1)
 				# need to pack the path into a list for accumulateDistance function which is
 				# expecting a list of Dict items
 				pathadd = accumulateDistances(trans_func,[path],pathadd,xvalues,yvalues,srclist,const_kernal_vol,edge_dist,vol_constant) 

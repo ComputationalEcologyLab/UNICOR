@@ -3837,7 +3837,7 @@ def calcOutputs(indexDict,isource,idest,path,nWeightPairs,xvalues,yvalues,pathad
 		
 		# If None path calculated
 		elif len(path) != 0 and path[0] == None:
-			pdb.set_trace()
+			
 			# Then write shortest path len value to matrix
 			cdmatrix[indexDict[isource]][indexDict[idest]] = None
 				
