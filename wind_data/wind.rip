@@ -1,12 +1,12 @@
 Session_label    test_wind
+Grid_Filename    ones.txt
 XY_Filename    test_wind.csv
 Use_Direction	TRUE
 Type_Direction	Wind
 Use_Resistance	TRUE
-Grid_Filename    ones.txt
 Barrier_or_U_Filename	uavg_narr_nrockies_albers.txt
 Direction_or_V_Filename	vavg_narr_nrockies_albers.txt
-Wind_Resistance_Max	10
+Speed_To_Resistance_Scale	0;10
 Use_ED_threshold    FALSE
 ED_Distance   10000
 Edge_Type	normal

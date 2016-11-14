@@ -1,3 +1,16 @@
+V11.13.2016: 20161113T09:17:00MST (ell)
+-1) Cleaned up some of the github folders; no more duplicate code, but a wind_data folder
+0) Begin work on adding directionality to resistant kernel function. (Dennis Rodder)
+a) Add option for 'Hiking' -> 'Hiking;A;B;C'
+b) Read in DEM, then
+slope = atan(x2 - x1 / run), where run takes into account the diagnols
+speed = A * exp (B * (slope + C)) **set C = 0 for now.
+WHere Speed < 0, make speed = A. 
+c) Rescale speed to resistance with given input scaling values
+Speed_resistance = ((max_res - min_res)/(min_speed - max_speed)) * Speed + max_res
+c) Speed_resistance gets added to the underlying resistance given in grid_file. 
+1) Added error checks
+
 v10.20.2015: 20151020T15:11:00MDT ell
 0) Begin work on adding in wind vector fields for directionality.
 a) Read in U/V raster surfaces. 
