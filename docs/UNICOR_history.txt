@@ -1,3 +1,7 @@
+v12.5.01: 20170327T12:59:00MDT (ell)
+0) Added version number for tracking to UNICOR.py
+1) Updated int(cellsize) to float(cellsize).
+
 V11.13.2016: 20161113T09:17:00MST (ell)
 -1) Cleaned up some of the github folders; no more duplicate code, but a wind_data folder
 0) Begin work on adding directionality to resistant kernel function. (Dennis Rodder)

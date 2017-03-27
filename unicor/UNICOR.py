@@ -7,7 +7,7 @@
 appRele = "2015-10-20T13:20:00MDT"
 appName = "UNICOR"
 # jmg corrected appVers tag to reflect actual software version (not SVNs, and not pending '1.0')
-appVers = "2.5"
+appVers = "2.5.01"
 authorNames = "E.L. Landguth, B.K. Hand, J.M. Glassy"
 
 # ----------------------------------------------------------
@@ -186,7 +186,7 @@ def main(ripFilePath):
 		ncols = int(header_dict['ncols'])
 		xllcorner = float(header_dict['xllcorner'])
 		yllcorner = float(header_dict['yllcorner'])
-		cellsize = int(header_dict['cellsize'])
+		cellsize = float(header_dict['cellsize'])
 		NODATA_value = float(header_dict['NODATA_value'])
 	
 	# --------------------------
@@ -218,7 +218,7 @@ def main(ripFilePath):
 		ncols = int(header_dict['ncols'])
 		xllcorner = float(header_dict['xllcorner'])
 		yllcorner = float(header_dict['yllcorner'])
-		cellsize = int(header_dict['cellsize'])
+		cellsize = float(header_dict['cellsize'])
 		NODATA_value = float(header_dict['NODATA_value'])
 	
 	# Print to log

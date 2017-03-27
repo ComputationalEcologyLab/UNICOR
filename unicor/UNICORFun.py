@@ -645,7 +645,7 @@ def RasterToNWeights(resgrid):
 	ncols = int(header_dict['ncols'])
 	xllcorner = float(header_dict['xllcorner'])
 	yllcorner = float(header_dict['yllcorner'])
-	cellsize = int(header_dict['cellsize'])
+	cellsize = float(header_dict['cellsize'])
 	NODATA_value = float(header_dict['NODATA_value'])
 
 	#xll,yll is the bottom left corner location, want key spot locations to be the center of each cell
@@ -803,7 +803,7 @@ def RasterToNWeights2(resgrid):
 	ncols = int(header_dict['ncols'])
 	xllcorner = float(header_dict['xllcorner'])
 	yllcorner = float(header_dict['yllcorner'])
-	cellsize = int(header_dict['cellsize'])
+	cellsize = float(header_dict['cellsize'])
 	NODATA_value = float(header_dict['NODATA_value'])
 
 	#xll,yll is the bottom left corner location, want key spot locations to be the center of each cell
@@ -1067,7 +1067,7 @@ def RasterToBarrierDirection(resgrid,elevgrid,barrgrid,dirtype):
 	ncols = int(header_dict['ncols'])
 	xllcorner = float(header_dict['xllcorner'])
 	yllcorner = float(header_dict['yllcorner'])
-	cellsize = int(header_dict['cellsize'])
+	cellsize = float(header_dict['cellsize'])
 	NODATA_value = float(header_dict['NODATA_value'])
 	
 	# Load barrier file
@@ -1077,7 +1077,7 @@ def RasterToBarrierDirection(resgrid,elevgrid,barrgrid,dirtype):
 	ncols_barr = int(header_dict_barr['ncols'])
 	xllcorner_barr = float(header_dict_barr['xllcorner'])
 	yllcorner_barr = float(header_dict_barr['yllcorner'])
-	cellsize_barr = int(header_dict_barr['cellsize'])
+	cellsize_barr = float(header_dict_barr['cellsize'])
 	NODATA_value_barr = float(header_dict_barr['NODATA_value'])
 	
 	# Load elevation file
@@ -1087,7 +1087,7 @@ def RasterToBarrierDirection(resgrid,elevgrid,barrgrid,dirtype):
 	ncols_elev = int(header_dict_elev['ncols'])
 	xllcorner_elev = float(header_dict_elev['xllcorner'])
 	yllcorner_elev = float(header_dict_elev['yllcorner'])
-	cellsize_elev = int(header_dict_elev['cellsize'])
+	cellsize_elev = float(header_dict_elev['cellsize'])
 	NODATA_value_elev = float(header_dict_elev['NODATA_value'])
 	
 	# Check here to make sure all the same sizes
@@ -2055,7 +2055,7 @@ def RasterToBarrierDirection_Conductance(resgrid,elevgrid,barrgrid,dirtype):
 	ncols = int(header_dict['ncols'])
 	xllcorner = float(header_dict['xllcorner'])
 	yllcorner = float(header_dict['yllcorner'])
-	cellsize = int(header_dict['cellsize'])
+	cellsize = float(header_dict['cellsize'])
 	NODATA_value = float(header_dict['NODATA_value'])
 	
 	# Load barrier file
@@ -2065,7 +2065,7 @@ def RasterToBarrierDirection_Conductance(resgrid,elevgrid,barrgrid,dirtype):
 	ncols_barr = int(header_dict_barr['ncols'])
 	xllcorner_barr = float(header_dict_barr['xllcorner'])
 	yllcorner_barr = float(header_dict_barr['yllcorner'])
-	cellsize_barr = int(header_dict_barr['cellsize'])
+	cellsize_barr = float(header_dict_barr['cellsize'])
 	NODATA_value_barr = float(header_dict_barr['NODATA_value'])
 	
 	# Load elevation file
@@ -2075,7 +2075,7 @@ def RasterToBarrierDirection_Conductance(resgrid,elevgrid,barrgrid,dirtype):
 	ncols_elev = int(header_dict_elev['ncols'])
 	xllcorner_elev = float(header_dict_elev['xllcorner'])
 	yllcorner_elev = float(header_dict_elev['yllcorner'])
-	cellsize_elev = int(header_dict_elev['cellsize'])
+	cellsize_elev = float(header_dict_elev['cellsize'])
 	NODATA_value_elev = float(header_dict_elev['NODATA_value'])
 	
 	# Check here to make sure all the same sizes
@@ -3129,7 +3129,7 @@ def RasterToWindSpeedDirection(resgrid,elevgrid,barrgrid,maxres,minres):
 	ncols = int(header_dict['ncols'])
 	xllcorner = float(header_dict['xllcorner'])
 	yllcorner = float(header_dict['yllcorner'])
-	cellsize = int(header_dict['cellsize'])
+	cellsize = float(header_dict['cellsize'])
 	NODATA_value = float(header_dict['NODATA_value'])
 	
 	# Load barrier file - this is u direction, rename so not confused.
@@ -3139,7 +3139,7 @@ def RasterToWindSpeedDirection(resgrid,elevgrid,barrgrid,maxres,minres):
 	ncols_u = int(header_dict_u['ncols'])
 	xllcorner_u = float(header_dict_u['xllcorner'])
 	yllcorner_u = float(header_dict_u['yllcorner'])
-	cellsize_u = int(header_dict_u['cellsize'])
+	cellsize_u = float(header_dict_u['cellsize'])
 	NODATA_value_u = float(header_dict_u['NODATA_value'])
 	
 	# Load elevation file - this is v direction, rename so not confused.
@@ -3149,7 +3149,7 @@ def RasterToWindSpeedDirection(resgrid,elevgrid,barrgrid,maxres,minres):
 	ncols_v = int(header_dict_v['ncols'])
 	xllcorner_v = float(header_dict_v['xllcorner'])
 	yllcorner_v = float(header_dict_v['yllcorner'])
-	cellsize_v = int(header_dict_v['cellsize'])
+	cellsize_v = float(header_dict_v['cellsize'])
 	NODATA_value_v = float(header_dict_v['NODATA_value'])
 	
 	# Check here to make sure all the same sizes
@@ -3767,7 +3767,7 @@ def RasterToHikingWeights(resgrid,elevgrid,maxres,A,B,minres):
 	ncols = int(header_dict['ncols'])
 	xllcorner = float(header_dict['xllcorner'])
 	yllcorner = float(header_dict['yllcorner'])
-	cellsize = int(header_dict['cellsize'])
+	cellsize = float(header_dict['cellsize'])
 	NODATA_value = float(header_dict['NODATA_value'])
 	
 	# Load slope file.
@@ -3777,7 +3777,7 @@ def RasterToHikingWeights(resgrid,elevgrid,maxres,A,B,minres):
 	ncols_v = int(header_dict_v['ncols'])
 	xllcorner_v = float(header_dict_v['xllcorner'])
 	yllcorner_v = float(header_dict_v['yllcorner'])
-	cellsize_v = int(header_dict_v['cellsize'])
+	cellsize_v = float(header_dict_v['cellsize'])
 	NODATA_value_v = float(header_dict_v['NODATA_value'])
 	
 	# Check here to make sure all the same sizes
