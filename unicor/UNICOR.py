@@ -4,7 +4,7 @@
 # most recent revision: "2011-03-07T12:07:00MST"(jmg)
 # originally created  : September 2009
 # ------------------------------------------------------------------------------------------------------
-appRele = "2015-10-20T13:20:00MDT"
+appRele = "2019-12-05T13:20:00MDT"
 appName = "UNICOR"
 # jmg corrected appVers tag to reflect actual software version (not SVNs, and not pending '1.0')
 appVers = "2.5.01"
@@ -257,11 +257,11 @@ def main(ripFilePath):
 		cd_matrix_lower.fill(np.nan)
 		cd_matrix_upper = np.empty((nopoints,nopoints))
 		cd_matrix_upper.fill(np.nan)
-		if dirtype == 'Wind' or dirtype == 'Hiking':
-			cd_matrix_lower_accCost = np.empty((nopoints,nopoints))
-			cd_matrix_lower_accCost.fill(np.nan)
-			cd_matrix_upper_accCost = np.empty((nopoints,nopoints))
-			cd_matrix_upper_accCost.fill(np.nan)
+		#if dirtype == 'Wind' or dirtype == 'Hiking':
+		cd_matrix_lower_accCost = np.empty((nopoints,nopoints))
+		cd_matrix_lower_accCost.fill(np.nan)
+		cd_matrix_upper_accCost = np.empty((nopoints,nopoints))
+		cd_matrix_upper_accCost.fill(np.nan)
 	
 	# Arrays of the resitance grid x and y values  
 	xvalues = np.arange(xllcorner+(cellsize/2.), xllcorner+(cellsize * ncols),cellsize,\
@@ -326,8 +326,8 @@ def main(ripFilePath):
 			stringpts_rev,visited_upper,EDthresholdans,num_of_pro \
 			,nWeightPairs,xvalues,yvalues,pathadd_upper,cd_matrix_upper,paths_upper,edge_type, \
 			edge_dist,transform_func,const_kernal_vol, vol_constant,nbhd_dist)
-			#print('Parallel processing not implemented with directional cost calculations at this point')
-			#sys.exit(-1)
+			print('Parallel processing not implemented with directional cost calculations at this point')
+			sys.exit(-1)
 		else:
 			tupSpaths = parallel_paths(logfHndl,nopoints,\
 			stringpts,visited,EDthresholdans,num_of_pro \

@@ -1,3 +1,19 @@
+Commit to Github 12.6.2019
+v2.5.01: 2019.06.12 (ell/cday)
+0. Checking directional; linux and parallel still producing cost values, added back sys.exit(-1), will continue to work on this. 
+
+3243 on FUN - fix when -9999 values exist *** in progress
+# Get nearest direction neighbor
+			if rastervalues_v[irow][icol] != -9999:
+				wind_dir = np.arctan2(rastervalues_v[irow][icol],rastervalues_u[irow][icol]) * 180 / np.pi
+				if wind_dir < 0: # correct for atan2 values that are negative
+					wind_dir = wind_dir + 360
+				takeClosest = lambda num,collection:min(collection,key=lambda x:abs(x-num))
+				closest_dir = takeClosest(wind_dir,phi_arr)
+				closest_ind = np.where(np.asarray(phi_arr) == closest_dir)[0][0]
+			else:
+				closest_ind = -9999
+
 v12.5.01: 20170327T12:59:00MDT (ell)
 0) Added version number for tracking to UNICOR.py
 1) Updated int(cellsize) to float(cellsize).

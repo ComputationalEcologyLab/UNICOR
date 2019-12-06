@@ -532,6 +532,8 @@ if priodictAvail:
 					elif wStr not in Q or vwLength < Q[wStr]:
 						Q[wStr] = vwLength
 						P[wStr] = v
+				#else:
+				#	continue
 			
 		return (paths, vOrder,pathlens)		
 		
