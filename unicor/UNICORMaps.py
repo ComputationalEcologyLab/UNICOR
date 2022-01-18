@@ -16,7 +16,7 @@ import pdb
 try:
 	import numpy as np
 except ImportError:
-	raise ImportError, "Numpy required."
+	raise ImportError("Numpy required.")
 
 
 # Scipy functions
@@ -25,7 +25,7 @@ try:
 	import scipy.signal	
 	scipyAvail = True
 except ImportError:
-	raise ImportError, "Scipy required for plotting."
+	raise ImportError("Scipy required for plotting.")
 	scipyAvail = False
 	
 	
@@ -33,7 +33,7 @@ except ImportError:
 try:
 	import time, datetime, copy					
 except ImportError:
-	raise ImportError, "Time and Datetime required."	
+	raise ImportError("Time and Datetime required.")	
 
 # -------------------------------------------------------------
 def triweight_kern(size, sizey=None):
@@ -54,10 +54,10 @@ def triweight_kern(size, sizey=None):
 	# Perform function: Biweight has split case for if abs(x,y) above/below 1
 	
 	# Loop through grid row values
-	for xval in xrange(int(x.shape[1])):
+	for xval in range(int(x.shape[1])):
 		
 		# Loop through grid column values
-		for yval in xrange(int(x.shape[0])):
+		for yval in range(int(x.shape[0])):
 			
 			# For abs values <= 1 at x spot
 			if np.abs(x[xval][yval]) <= 1:
@@ -108,10 +108,10 @@ def cosine_kern(size, sizey=None):
 	# Perform function: Biweight has split case for if abs(x,y) above/below 1
 	
 	# Loop through grid row values
-	for xval in xrange(int(x.shape[1])):
+	for xval in range(int(x.shape[1])):
 		
 		# Loop through grid column values
-		for yval in xrange(int(x.shape[0])):
+		for yval in range(int(x.shape[0])):
 			
 			# For abs values <= 1 at x spot
 			if np.abs(x[xval][yval]) <= 1:
@@ -162,10 +162,10 @@ def biweight_kern(size, sizey=None):
 	# Perform function: Biweight has split case for if abs(x,y) above/below 1
 	
 	# Loop through grid row values
-	for xval in xrange(int(x.shape[1])):
+	for xval in range(int(x.shape[1])):
 		
 		# Loop through grid column values
-		for yval in xrange(int(x.shape[0])):
+		for yval in range(int(x.shape[0])):
 			
 			# For abs values <= 1 at x spot
 			if np.abs(x[xval][yval]) <= 1:
@@ -216,10 +216,10 @@ def triangle_kern(size, sizey=None):
 	# Perform function: Triangle has split case for if abs(x,y) above/below 1
 	
 	# Loop through grid row values
-	for xval in xrange(int(x.shape[1])):
+	for xval in range(int(x.shape[1])):
 		
 		# Loop through grid column values
-		for yval in xrange(int(x.shape[0])):
+		for yval in range(int(x.shape[0])):
 			
 			# For abs values <= 1 at x spot
 			if np.abs(x[xval][yval]) <= 1:
@@ -270,10 +270,10 @@ def uniform_kern(size, sizey=None):
 	# Perform function: Uniform has split case for if abs(x,y) above/below 1
 	
 	# Loop through grid row values
-	for xval in xrange(int(x.shape[1])):
+	for xval in range(int(x.shape[1])):
 		
 		# Loop through grid column values
-		for yval in xrange(int(x.shape[0])):
+		for yval in range(int(x.shape[0])):
 			
 			# For abs values <= 1 at x spot
 			if np.abs(x[xval][yval]) <= 1:
@@ -324,10 +324,10 @@ def epanechnikov_kern(size, sizey=None):
 	# Perform function: Epanechnikov has split case for if abs(x,y) above/below 1
 	
 	# Loop through grid row values
-	for xval in xrange(int(x.shape[1])):
+	for xval in range(int(x.shape[1])):
 		
 		# Loop through grid column values
-		for yval in xrange(int(x.shape[0])):
+		for yval in range(int(x.shape[0])):
 			
 			# For abs values <= 1 at x spot
 			if np.abs(x[xval][yval]) <= 1:
@@ -447,7 +447,7 @@ def getlevels(ncols,nrows,Levels,buffervalues)	:
 	cutofflevels = []
 	
 	# Loop through number of levels for cutoff mark
-	for icut in xrange(Levels-1):
+	for icut in range(Levels-1):
 	
 		# Get buffered values cutoff
 		cutofflevels.append((cutoffpercent*(icut+1)/100)*buffermax)
@@ -457,9 +457,9 @@ def getlevels(ncols,nrows,Levels,buffervalues)	:
 	cutofflevels.append(buffermax)
 		
 	# Then go through buffervalues re-assigning catagorical levels
-	for icol in xrange(ncols):
-		for irow in xrange(nrows):
-			for icutlevel in xrange(Levels):
+	for icol in range(ncols):
+		for irow in range(nrows):
+			for icutlevel in range(Levels):
 			
 				# Then check cases
 				if buffervalues[irow][icol] > cutofflevels[icutlevel] and buffervalues[irow][icol] <= cutofflevels[icutlevel+1]:

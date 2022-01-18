@@ -11,12 +11,12 @@ import pdb
 try:
 	import sys, os
 except ImportError as eMsg:
-	print(("ImportError: (%s) OS and SYS required!"%(eMsg)))
+	print("ImportError: (%s) OS and SYS required!"%(eMsg))
 	sys.exit(-1)
 try:
 	import numpy as np
 except ImportError as eMsg:
-	print(("ImportError (%s) Numpy required."%(eMsg)))
+	print("ImportError (%s) Numpy required."%(eMsg))
 	sys.exit(-1)
 	
 # ------------------------------------------------------------------------------------------
@@ -29,7 +29,7 @@ def loadFile(filename, header_lines=0, delimiter=None, cdpop_inputvars=False): #
 	try:
 		inputfile = open(filename)
 	except (IOError,OSError) as e:
-		print(("Load file: %s the file (%s) is not available!"%(e,filename)))
+		print("Load file: %s the file (%s) is not available!"%(e,filename))
 		sys.exit(-1)
 	header_dict = {}
 	data_list = []
@@ -100,7 +100,7 @@ def logMsg(outf,msg,msgVerbose = False):
 	'''
 	outf.write(msg+ '\n')
 	if msgVerbose:
-		print(("%s"%(msg)))
+		print("%s"%(msg))
 	
 	# End::logMsg()
 	
@@ -121,7 +121,7 @@ def outputGrid(out_filename,data,headers=None,header_dict=None,keys=None,delimit
 	fout = open(out_filename, 'w')
 	if header_dict != None:
 		if keys == None:
-			keys = list(header_dict.keys())
+			keys = header_dict.keys()
 		for key in keys:
 			#fout.write(key + ' ' + header_dict[key] + '\n')
 			fout.write(key + delimiter + header_dict[key] + '\n')
@@ -132,9 +132,9 @@ def outputGrid(out_filename,data,headers=None,header_dict=None,keys=None,delimit
 				fout.write(delimiter)
 		fout.write('\n')
 	# Begin loop through rows
-	for i in range(len(data)):
+	for i in xrange(len(data)):
 		# Begin Loop through columns
-		for j in range(len(data[0])):
+		for j in xrange(len(data[0])):
 			# Write out pathadd list value
 			fout.write(str(data[i][j]))
 			if j != (len(data[i])-1):

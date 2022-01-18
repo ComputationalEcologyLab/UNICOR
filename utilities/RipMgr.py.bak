@@ -778,9 +778,9 @@ class RipObj(object):
 		such that each ripObj has ONE name and ONE instance associated with that name.
 		"""
 		# check if a boolean submitted as a string, convert to a Python boolean if it is
-		if newObjInstance == 'True' or newObjInstance == 'TRUE':
+		if newObjInstance is 'True' or newObjInstance is 'TRUE':
 			newObjInstance = True
-		if newObjInstance == 'False' or newObjInstance == 'FALSE':
+		if newObjInstance == 'False' or newObjInstance is 'FALSE':
 			newObjInstance = False
 		#
 		self.ripoObj = newObjInstance
@@ -1195,9 +1195,9 @@ class RipMgr(object):
 				    getMyValue = r3['var1']
 		"""
 		# check if a boolean submitted as a string, convert to a Python boolean if it is
-		if newValue == 'True' or newValue == 'TRUE':
+		if newValue is 'True' or newValue is 'TRUE':
 			newValue = True
-		if newValue == 'False' or newValue == 'FALSE':
+		if newValue == 'False' or newValue is 'FALSE':
 			newValue = False
 
 		# use new permissive semantics where we create a new dKey instance
@@ -1235,7 +1235,7 @@ class RipMgr(object):
 			print(("kwdGetvalue missing-key-error %s"%(e)))
 		except UnboundLocalError as e:
 			#raise "kwdGetValue unbound local error", e
-			print(("Error {0}".format(str(e.args[0])).encode("utf-8")))
+			print("Error {0}".format(str(e.args[0])).encode("utf-8"))
 		#
 		return keysValue
 		# end::kwdGetValue()
@@ -2612,7 +2612,7 @@ def mgrParseStanzaInputs(rtpPath,parentName=None,manifestPath=None):
 				ripParent.mgrStanzaAssignKeyword(currentStanza,keyword)
 				ripParent.kwdSetDatatype(keyword,dType)
 			#
-			if valu != 'no-value':
+			if valu is not 'no-value':
 				ripParent.kwdSetValue(keyword,valu)
 			else:
 				if verbose:

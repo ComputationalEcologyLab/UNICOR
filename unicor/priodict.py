@@ -9,7 +9,7 @@
 #        return a useful value until the next iteration of the for-loop.
 # Each operation takes logarithmic amortized time.
 
-from __future__ import generators
+
 
 class priorityDictionary(dict):
 	def __init__(self):
@@ -22,7 +22,7 @@ until it is found by smallest() or until the heap is rebuilt.'''
 	def smallest(self):
 		'''Find smallest item after removing deleted items from front of heap.'''
 		if len(self) == 0:
-			raise IndexError, "smallest of empty priorityDictionary"
+			raise IndexError("smallest of empty priorityDictionary")
 		heap = self.__heap
 		while heap[0][1] not in self or self[heap[0][1]] != heap[0][0]:
 			lastItem = heap.pop()
@@ -53,7 +53,7 @@ Rebuilds the heap if the number of deleted items gets large, to avoid memory lea
 		dict.__setitem__(self,key,val)
 		heap = self.__heap
 		if len(heap) > 2 * len(self):
-			self.__heap = [(v,k) for k,v in self.iteritems()]
+			self.__heap = [(v,k) for k,v in self.items()]
 			self.__heap.sort()  # builtin sort probably faster than O(n)-time heapify
 		else:
 			newPair = (val,key)

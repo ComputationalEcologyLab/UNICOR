@@ -11,7 +11,7 @@ import pdb, random
 try:
 	import numpy as np
 except ImportError as eMsg:
-	print(("ImportError (%s) Numpy required."%(eMsg)))
+	print("ImportError (%s) Numpy required."%(eMsg))
 	sys.exit(-1)
 # ---------------------------------------------------------------------------------------------------	 
 def w_choice_general(lst):
@@ -69,4 +69,4 @@ if __name__ == '__main__':
 	
 	TOLERANCE = 0.25
 	percent = compareElementsPercent(list1,list2,TOLERANCE)
-	print(percent)
+	print percent

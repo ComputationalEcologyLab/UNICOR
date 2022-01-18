@@ -4,13 +4,11 @@
 # originally created  : August 2011
 # GOAL: Automate Unicor Runs
 # Keywords: Cdmatrix creation, Unicor, automation
-#
 # ------------------------------------------------------------------------------------------------------
 appRele = ""
 appName = "UnicorScript"
 appVers = "0.9"
 authorNames = "Brian Hand"
-
 
 #File absolute paths for importing functions
 UTILITIES_PATH =  "../utilities/"
@@ -24,7 +22,7 @@ try:
 	import os, sys, random, math
 	from operator import attrgetter                    
 except ImportError as eMsg:
-	print("ImportError: (%s) OS and SYS and random required!"%(eMsg))
+	print(("ImportError: (%s) OS and SYS and random required!"%(eMsg)))
 	import sys
 	sys.exit(-1)
 	
@@ -33,7 +31,6 @@ CSV_folder = os.path.dirname(os.path.abspath(UTILITIES_PATH+"CSVParse"))
 FILEIO_folder = os.path.dirname(os.path.abspath(UTILITIES_PATH+"FileIO"))
 LOG_folder = os.path.dirname(os.path.abspath(UTILITIES_PATH+"Log"))
 RANDOM_folder = os.path.dirname(os.path.abspath(UTILITIES_PATH+"RandomFun"))
-
 
 if CSV_folder not in sys.path:
      sys.path.insert(0, CSV_folder)
@@ -49,14 +46,14 @@ try:
 	import numpy as np
 	import scipy.stats as spstats
 except ImportError as eMsg:
-	print("ImportError (%s) Numpy required."%(eMsg))
+	print(("ImportError (%s) Numpy required."%(eMsg)))
 	sys.exit(-1)
 
 # UNICOR functions
 try:
 	from UNICOR import main as RunUNICOR
 except ImportError as eMsg:
-	print("ImportError: (%s) UNICOR.py is required"%(eMsg))
+	print(("ImportError: (%s) UNICOR.py is required"%(eMsg)))
 	sys.exit(-1)
 
 # Utility functions
@@ -68,7 +65,7 @@ try:
 	from RipMgr import mgrParseStanzaInputs    # Joe's Rip Manager for inputs
 	from RipMgr import *
 except ImportError as eMsg:
-	print("ImportError: (%s) FileIO.py and CSVParse.py are required."%(eMsg))
+	print(("ImportError: (%s) FileIO.py and CSVParse.py are required."%(eMsg)))
 	sys.exit(-1)
 
 
@@ -83,12 +80,12 @@ def main(*arguements):
 	
 	# If user did not specify .rip file
 	else:
-		print "User must specify input file name (e.g., at command line type GARM.py user_input.rip)."
+		print("User must specify input file name (e.g., at command line type GARM.py user_input.rip).")
 		sys.exit(-1)	
 	
 	# If .ip file does not exist
 	if not os.path.exists(ripFilePath):
-		print("Cannot find or open runtime inputs file(%s)"%(ripFilePath))
+		print(("Cannot find or open runtime inputs file(%s)"%(ripFilePath)))
 		sys.exit(-1)
 
 	dir = 'tree100perlandscape/'
@@ -101,7 +98,7 @@ def main(*arguements):
 	grid_file_out = 'aus_bird_unicor.rip'
 	for bird in bird_types:
 		for type in file_types:
-			print 'now running ' + bird + type
+			print('now running ' + bird + type)
 			header_dict, data = FileIO.loadFile(ripFilePath,header_lines = 16)
 			header_dict['XY_Filename'] = str(bird + '_XY.csv')
 			header_dict['Grid_Filename'] = str(dir + bird + type)

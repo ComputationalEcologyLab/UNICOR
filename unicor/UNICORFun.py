@@ -1,6 +1,7 @@
 # ---------------------------------------------------------------------------------------------------
 # UNICORFun.py
 # Author(s): Erin L Landguth, Brian Hand, Joe Glassy
+# revised: 2022-01-18 ELL
 # revised: 2010-12-24 BKH
 # revised: 2010-11-16T14:31:01MST jmg
 # revised: 2010-11-16T13:07:01MST jmg
@@ -23,19 +24,19 @@ import math
 try:
 	import numpy as np					
 except ImportError as eMsg:
-	print("ImportError: (%s) Numpy required."%(eMsg))
+	print(("ImportError: (%s) Numpy required."%(eMsg)))
 	
 # Timing functions
 try:
 	import time, datetime					
 except ImportError as eMsg:
-	print("ImportError: (%s) Time and Datetime required."%(eMsg))
+	print(("ImportError: (%s) Time and Datetime required."%(eMsg)))
 	
 # Platform and system functions
 try:
 	import os, sys                    
 except ImportError as eMsg:
-	print("ImportError: (%s) OS and SYS required."%(eMsg))
+	print(("ImportError: (%s) OS and SYS required."%(eMsg)))
 
 #File absolute paths for importing functions
 UTILITIES_PATH =  "../utilities/"
@@ -50,29 +51,29 @@ if FILEIO_folder not in sys.path:
 try:
 	import FileIO
 except ImportError as eMsg:
-	print("ImportError: FileIO.py is required."%(eMsg)) 
+	print(("ImportError: FileIO.py is required."%(eMsg))) 
 	
 # Dictionary library needed for Dijkstra's algorithm
 try:
 	from priodict import priorityDictionary	
 	priodictAvail = True
 except ImportError as eMsg:
-	print("ImportError: (%s) Priodict required."%(eMsg))
+	print(("ImportError: (%s) Priodict required."%(eMsg)))
 	priodictAvail = False
 
 try:
 	from scipy.spatial import KDTree
 	scipyAvail = True
 except ImportError as eMsg:
-	print("ImportError: (%s) Scipy required."%(eMsg))
+	print(("ImportError: (%s) Scipy required."%(eMsg)))
 	scipyAvail = False
 	
 # For parallel processing
 try:
-	import Queue
+	import queue
 	from multiprocessing import Process, JoinableQueue        
 except ImportError as eMsg:
-	print("ImportError: (%s) Multiprocessing required."%(eMsg)) 
+	print(("ImportError: (%s) Multiprocessing required."%(eMsg))) 
 
 
 
@@ -83,11 +84,11 @@ def info(title):
 	module called, parent process, child process,
 	and pid.
 	'''
-	print title
-	print 'module name:', __name__
-	if os.name is not 'nt':
-		print 'parent process:', os.getppid()
-	print("info: process id: %d"%(os.getpid()))
+	print(title)
+	print('module name:', __name__)
+	if os.name != 'nt':
+		print('parent process:', os.getppid())
+	print(("info: process id: %d"%(os.getpid())))
 	# End::info()
 
 def setFloat(strPoint):
@@ -96,7 +97,8 @@ def setFloat(strPoint):
 	return (isource_x,isource_y)
 
 	
-def setStr((float_x,float_y)):
+def setStr(xxx_todo_changeme):
+	(float_x,float_y) = xxx_todo_changeme
 	return str(float_x) + '_' + str(float_y)	
 
 def approxWhere(chkAry, searchValue, TOLERANCE = 10E-5):
@@ -190,8 +192,7 @@ if priodictAvail:
 				
 				if wStr in D:	
 					if vwLength < D[wStr]:
-						raise ValueError, \
-	"Dijkstra: found better path to already-final vertex"
+						raise ValueError("Dijkstra: found better path to already-final vertex")
 				
 				elif wStr not in Q or vwLength < Q[wStr]:
 					Q[wStr] = vwLength
@@ -294,7 +295,7 @@ if priodictAvail:
 				if wStr in D:	
 					if vwLength < D[wStr]:
 						pdb.set_trace()
-						raise ValueError, "Dijkstra: found better path to already-final vertex."
+						raise ValueError("Dijkstra: found better path to already-final vertex.")
 				
 				elif wStr not in Q or vwLength < Q[wStr]:
 				#if wStr not in Q:
@@ -401,7 +402,7 @@ if priodictAvail:
 				
 				if wStr in D:	
 					if vwLength < D[wStr]:
-						raise ValueError, "Dijkstra: found better path to already-final vertex."
+						raise ValueError("Dijkstra: found better path to already-final vertex.")
 				
 				elif wStr not in Q or vwLength < Q[wStr]:
 				#if wStr not in Q:
@@ -526,14 +527,11 @@ if priodictAvail:
 				if vwLength < float(edgethreshold):
 					if wStr in D:	
 						if vwLength < D[wStr]:
-							raise ValueError, \
-	"Dijkstra: found better path to already-final vertex"
+							raise ValueError("Dijkstra: found better path to already-final vertex")
 				
 					elif wStr not in Q or vwLength < Q[wStr]:
 						Q[wStr] = vwLength
 						P[wStr] = v
-				#else:
-				#	continue
 			
 		return (paths, vOrder,pathlens)		
 		
@@ -620,8 +618,7 @@ if priodictAvail:
 				if vwLength < float(edgethreshold):
 					if wStr in D:	
 						if vwLength < D[wStr]:
-							raise ValueError, \
-	"Dijkstra: found better path to already-final vertex"
+							raise ValueError("Dijkstra: found better path to already-final vertex")
 							
 					elif wStr not in Q or vwLength < Q[wStr]:
 						Q[wStr] = vwLength
@@ -678,11 +675,11 @@ def RasterToNWeights(resgrid):
 	sqrtOf2 = np.sqrt(2.0)
 	sqrtOf2xMidCell = sqrtOf2 * midCell
 	
-	for irow in xrange(nrows):
+	for irow in range(nrows):
 		
 		yspot = yll+( cellsize * (nrows-1-irow))
 		
-		for icol in xrange(ncols):			
+		for icol in range(ncols):			
 			
 			# Get key spot name
 			xspot = xll+( cellsize * icol)
@@ -836,11 +833,11 @@ def RasterToNWeights2(resgrid):
 	sqrtOf2 = np.sqrt(2.0)
 	sqrtOf2xMidCell = sqrtOf2 * midCell
 	
-	for irow in xrange(nrows):
+	for irow in range(nrows):
 		
 		yspot = yll+( cellsize * (nrows-1-irow))
 		
-		for icol in xrange(ncols):			
+		for icol in range(ncols):			
 			
 			# Get key spot name
 			xspot = xll+( cellsize * icol)
@@ -1156,11 +1153,11 @@ def RasterToBarrierDirection(resgrid,elevgrid,barrgrid,dirtype):
 	sqrtOf2 = np.sqrt(2.0)
 	sqrtOf2xMidCell = sqrtOf2 * midCell
 	
-	for irow in xrange(nrows):
+	for irow in range(nrows):
 		
 		yspot = yll+( cellsize * (nrows-1-irow))
 		
-		for icol in xrange(ncols):			
+		for icol in range(ncols):			
 			
 			# Get key spot name
 			xspot = xll+( cellsize * icol)
@@ -2132,11 +2129,11 @@ def RasterToBarrierDirection_Conductance(resgrid,elevgrid,barrgrid,dirtype):
 	sqrtOf2 = np.sqrt(2.0)
 	sqrtOf2xMidCell = sqrtOf2 * midCell
 	
-	for irow in xrange(nrows):
+	for irow in range(nrows):
 		
 		yspot = yll+( cellsize * (nrows-1-irow))
 		
-		for icol in xrange(ncols):			
+		for icol in range(ncols):			
 			
 			# Get key spot name
 			xspot = xll+( cellsize * icol)
@@ -3098,7 +3095,7 @@ def RasterToBarrierDirection_Conductance(resgrid,elevgrid,barrgrid,dirtype):
 								seven_yspot = float(yspot-cellsize)
 								seven_cond = rastervalues_barr[irow+1][icol+1]
 			if (zero != None and zero < 0) or (one != None and one < 0) or (two != None and two <0) or (three !=None and three <0) or (four != None and four <0) or (five !=None and five <0) or (six != None and six <0) or (seven != None and seven <0):
-				print('Resgrid or barrgrid or facgrid not matching and negative value found around, X='+str(xpot)+' Y='+str(yspot))
+				print(('Resgrid or barrgrid or facgrid not matching and negative value found around, X='+str(xpot)+' Y='+str(yspot)))
 				sys.exit(-1)
 			# Get neighbors:			
 			nWeightPairs[irow][icol][0] = (zero_xspot,zero_yspot,zero,zero_cond)
@@ -3217,11 +3214,11 @@ def RasterToWindSpeedDirection(resgrid,elevgrid,barrgrid,maxres,minres):
 	order_cost = np.asarray([2,3,4,5,6,7,8,9])
 	
 	# Begin irow loop
-	for irow in xrange(nrows):
+	for irow in range(nrows):
 		
 		yspot = yll+( cellsize * (nrows-1-irow))
 		# Begin icol loop
-		for icol in xrange(ncols):			
+		for icol in range(ncols):			
 			
 			# Get key spot name
 			xspot = xll+( cellsize * icol)
@@ -3247,7 +3244,7 @@ def RasterToWindSpeedDirection(resgrid,elevgrid,barrgrid,maxres,minres):
 			#ccw_dir = (-1./180) * (phi_arr - wind_dir) + 1
 			#cc_dir = (1./180) * (phi_arr - wind_dir) + 1
 			wind_prob = []
-			for iwind in xrange(8):
+			for iwind in range(8):
 				phi = phi_arr[iwind] # This neighbor
 				# For wind_dir 0 to 180, then ccw is less than 360
 				if wind_dir <= 180 and wind_dir >= 0:
@@ -3823,11 +3820,11 @@ def RasterToHikingWeights(resgrid,elevgrid,maxres,A,B,minres):
 	m = (maxres - minres)/(minspeed - maxspeed)
 	
 	# Begin irow loop
-	for irow in xrange(nrows):
+	for irow in range(nrows):
 		
 		yspot = yll+( cellsize * (nrows-1-irow))
 		# Begin icol loop
-		for icol in xrange(ncols):			
+		for icol in range(ncols):			
 			
 			# Get key spot name
 			xspot = xll+( cellsize * icol)
@@ -4152,7 +4149,7 @@ if scipyAvail:
 			
 				if (np.asarray(stringpts) == s1 + '_' + s2).any():
 					
-					print('Warning: There are overlapping points around x = ' + s1 + ' y = ' + s2 + '.')
+					print(('Warning: There are overlapping points around x = ' + s1 + ' y = ' + s2 + '.'))
 					if directionans:
 						print('Overlapping points must be removed for directional answer TRUE.')
 						sys.exit(-1)					
@@ -4197,7 +4194,7 @@ def calcOutputs(indexDict,isource,idest,path,nWeightPairs,xvalues,yvalues,pathad
 		# If no path calculated
 		if len(path) == 0:
 			
-			for i in xrange(len(idest)):	
+			for i in range(len(idest)):	
 				# Then write shortest path len value to matrix
 				cdmatrix[indexDict[isource]][indexDict[idest[i]]] = None
 				
@@ -4216,7 +4213,7 @@ def calcOutputs(indexDict,isource,idest,path,nWeightPairs,xvalues,yvalues,pathad
 		# If path calculated
 		elif len(path) != 0 and path[0] != None:
 			
-			for ipath in xrange(len(path)):
+			for ipath in range(len(path)):
 							
 				(xspot,yspot) = setFloat(path[ipath])
 				
@@ -4251,7 +4248,7 @@ def calcOutputs_wind(indexDict,isource,idest,path,nWeightPairs,xvalues,yvalues,p
 		# If no path calculated
 		if len(path) == 0:
 			
-			for i in xrange(len(idest)):	
+			for i in range(len(idest)):	
 				# Then write shortest path len value to matrix
 				cdmatrix[indexDict[isource]][indexDict[idest[i]]] = None
 				cdmatrix_accCost[indexDict[isource]][indexDict[idest[i]]] =None
@@ -4272,7 +4269,7 @@ def calcOutputs_wind(indexDict,isource,idest,path,nWeightPairs,xvalues,yvalues,p
 		# If path calculated
 		elif len(path) != 0 and path[0] != None:
 			
-			for ipath in xrange(len(path)):
+			for ipath in range(len(path)):
 							
 				(xspot,yspot) = setFloat(path[ipath])
 				
@@ -4342,7 +4339,7 @@ nbhd_dist=None):
 	srclist = []
 	indexDict = {}
 	# Begin source loop
-	for isource in xrange(nopoints):
+	for isource in range(nopoints):
 		idestpts = []
 	 	
 		indexDict[stringpts[isource]] = isource
@@ -4350,7 +4347,7 @@ nbhd_dist=None):
 		# cdmatrix
 		
 		# Start destination loop
-		for idest in xrange(nopoints):
+		for idest in range(nopoints):
 		  	#add the dest point to a dict and associated index value to later create the 
 			# cdmatrix
 			# Check for looping backwards and if itself
@@ -4391,7 +4388,7 @@ def accumulateDistances(trans_func,full_paths,pathadd,xvalues,yvalues,srclist,co
 	count = 0
 	for dist_dicts in full_paths:
 		temp_distances = np.zeros((pathadd.shape))
-		for point,distance in dist_dicts.iteritems():
+		for point,distance in dist_dicts.items():
 			
 			(xspot,yspot) = setFloat(point)
 		
@@ -4533,7 +4530,7 @@ def serial_paths(dirtype,logfHndl,nopoints,stringpts,visited,EDthresholdans,nWei
 	'''
 
 	# Out Queue
-	out_queue = Queue.Queue(0)
+	out_queue = queue.Queue(0)
 	
 	# Call function to calculate the points - lower
 	srclist, destlist, indexDict = calc_points(nopoints,stringpts,visited,\

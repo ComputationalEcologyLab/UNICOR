@@ -28,12 +28,12 @@ from numpy import zeros
 def csvParse(filePath, csvFile):
   # ensure the file path exists
   if not os.path.isdir(filePath):
-    print("Path does not exist!")
+    print "Path does not exist!"
     sys.exit(-1)
 
   # ensure the csv file exists
   if not os.path.isfile(filePath + csvFile):
-    print("File does not exist!")
+    print "File does not exist!"
     sys.exit(-1)
 
   # read the file...
@@ -93,7 +93,7 @@ def generatezt(inMatrix,outFile):
       file.write("\n")
     file.close()
   else:
-    print("Error opening output file!")
+    print "Error opening output file!"
 
 #================================================================
 # csv2zt(filePath,csvFile)

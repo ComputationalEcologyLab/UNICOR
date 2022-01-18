@@ -1,3 +1,6 @@
+v3.0: 2022.01.17T9:56:00 (ell)
+0. Full move to Python 3; checking all warnings/errors.
+
 Commit to Github 12.6.2019
 v2.5.01: 2019.06.12 (ell/cday)
 0. Checking directional; linux and parallel still producing cost values, added back sys.exit(-1), will continue to work on this. 

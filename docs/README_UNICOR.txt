@@ -3,17 +3,17 @@ README
 ======
 
 ------------------  
-UNICOR 1.0 release
+UNICOR 3.0 release
 ------------------
 
-Welcome to the UNICOR v 1.0 release!  UNICOR is a network simulation model designed to help researchers and managers identify vulnerable species and landscapes and evaluate the relative merits of conservation, restoration, or assisted mitigation.  UNICOR is specifically designed to enable quantification of future changes to habitat fragmentation and connectivity by comparing predicted landscape changes stemming from climate regime shifts, urban development, and their interactions.  This release includes installation instructions, version notes, some examples, and technical documentation.
+Welcome to the UNICOR v 3.0 release!  UNICOR is a network simulation model designed to help researchers and managers identify vulnerable species and landscapes and evaluate the relative merits of conservation, restoration, or assisted mitigation.  UNICOR is specifically designed to enable quantification of future changes to habitat fragmentation and connectivity by comparing predicted landscape changes stemming from climate regime shifts, urban development, and their interactions.  This release includes installation instructions, version notes, some examples, and technical documentation.
 
-Program Contributors: Erin Landguth, Brian Hand, Joe Glassy
-Link: http://cel.dbs.umt.edu/software/UNICOR/
-Version: 1.0
-Python: 2.6.4
-Release Date: 2011.03.01
-README Update: 2011.02.09 (ell)
+Program Contributors: Erin Landguth, Brian Hand, Joe Glassy, Casey Day, Patrick Jantz
+Link: http://github.com/computationalecologylab/UNICOR
+Version: 3.0
+Python: 3.8.3
+Release Date: 2022.01.10
+README Update: 2022.01.10 (ell)
 
 --------
 Contents
@@ -28,6 +28,7 @@ UNICOR.py - Python driver code
 UNICORFun.py - Python main module/function code
 UNICORMaps.py - Python display module code
 UNICOROutputs.py - Python file output module code
+unicor_script.py - Python files for running batch files
   
 Additional Packages:
 RipMgr - Installation file for input package by Glassy (2011)
@@ -42,7 +43,7 @@ small_test.rip - Sample run input parameters
 Requirements and Pre-requisite Software
 ---------------------------------------
 
-1. Baseline Requirements.  UNICOR requires the Python2.6.x interpreter and the NumPy and SciPy package.  Several optional Python module packages, if enabled, facilitate additional UNICOR functionality. Remember that Python modules usually require  particular Python interpreters, so be sure the version ID for any external Python module or package (e.g. NumPy or others) matches the version of your Python interpreter (normally v2.6.x).
+1. Baseline Requirements.  UNICOR requires the Python3 interpreter and the NumPy and SciPy package.  Several optional Python module packages, if enabled, facilitate additional UNICOR functionality. Remember that Python modules usually require  particular Python interpreters, so be sure the version ID for any external Python module or package (e.g. NumPy or others) matches the version of your Python interpreter (normally v3.x.x).
 
 -------------------	
 UNICOR Installation
@@ -64,7 +65,7 @@ The example run is for 10 points representing individuals on a Euclidean distanc
 
 3. This file is the stanza format following RipMgr documentation.  All '#' signs are comments followed by variable names with a tab to the parameter specified.  The parameter can be changed for running UNICOR, but downloaded parameters will run as is.  See table 1 for more details on each parameter along with its dependency.
 
-4. Start the program with a graphical interface or at the command line: For example, if you downloaded Python 2.6.x from www.python.org, then you are provided with a graphical interface, IDLE.  In Windows you can find IDLE from your Start menu > All Programs > Python 2.6 > IDLE (Python GUI).  Alternatively, if you use Python from the command line, then open a terminal window and change your shell directory to the UNICOR home directory.
+4. Start the program with a graphical interface or at the command line: For example, if you downloaded Python 3 from www.python.org, then you are provided with a graphical interface, IDLE.  In Windows you can find IDLE from your Start menu > All Programs > Python 3.x > IDLE (Python GUI).  Alternatively, if you use Python from the command line, then open a terminal window and change your shell directory to the UNICOR home directory.
 
 5. Run the program: There are a number of ways to run this program.  For example, if you are using a command shell you can run the program by typing “python UNICOR.py example.rip”.
 
@@ -78,11 +79,8 @@ Contact Information:
 
 Erin Landguth
 Computational Ecology Laboratory
-Division of Biological Sciences
 The University of Montana
 32 Campus Drive
 Missoula MT, 59812-1002
 (406) 210-9332
 Erin.landguth@mso.umt.edu
-<cel.dbs.umt.edu>
-

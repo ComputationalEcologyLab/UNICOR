@@ -1,6 +1,7 @@
 # ---------------------------------------------------------------------------------------------------
 # UNICOROutputs.py
 # Author(s): Erin L Landguth, Brian Hand, Joe Glassy
+# revised: 2022-01-18 ELL 
 # Created: September 2009
 # v 0.5 -- 2010 August 30: Code Cleanup and function additions to outputs.
 # ------------------------------------------------------------------------------------------------------
@@ -17,13 +18,13 @@ import pdb
 try:
     import numpy as np                    
 except ImportError:
-    raise ImportError, "Numpy required."
+    raise ImportError("Numpy required.")
 
 # Timing and general functions
 try:
 	import time, datetime, copy, sys, os
 except ImportError:
-	raise ImportError, "Time and Datetime and copy required."
+	raise ImportError("Time and Datetime and copy required.")
 
 #File absolute paths for importing functions
 UTILITIES_PATH =  "../utilities/"
@@ -38,7 +39,7 @@ if FILEIO_folder not in sys.path:
 try:
 	import FileIO
 except ImportError as eMsg:
-	print("ImportError: FileIO.py is required."%(eMsg)) 
+	print(("ImportError: FileIO.py is required."%(eMsg))) 
 
 # ---------------------------------------------------------------------------------------------------
 def count_unique(keys):
@@ -68,7 +69,7 @@ def output_cdmatrix(logfHndl,cd_matrix, output_filename,data_dir,stringpts):
 	duplicates_strpts = np.where(uni_strpts[1]>1)[0]
 	if len(duplicates_strpts) != 0:
 		# Loop through duplicates
-		for i in xrange(len(duplicates_strpts)):
+		for i in range(len(duplicates_strpts)):
 			
 			# Get dupliccate value
 			strdouble = uni_strpts[0][duplicates_strpts[i]]
@@ -207,7 +208,7 @@ def output_paths(logfHndl,paths,paths_file_name,data_dir):
 	fout.write('Source,Destination,PathLength,PathConnections\n')
 	
 	# Begin loop through point combinations
-	for ipath in xrange(len(paths)):
+	for ipath in range(len(paths)):
 	
 		# Print out path source, destination, length
 		fout.write(paths[ipath][0])
@@ -218,7 +219,7 @@ def output_paths(logfHndl,paths,paths_file_name,data_dir):
 		fout.write(',')
 		# Print out the path connections
 		if paths[ipath][3] != None:
-			for ipathlen in xrange(len(paths[ipath][3])):
+			for ipathlen in range(len(paths[ipath][3])):
 				fout.write(paths[ipath][3][ipathlen])
 				fout.write(',')
 		else:
@@ -289,7 +290,7 @@ def output_graphmetrics(pathadd,paths,file_name,data_dir):
 		
 	except ImportError:
 		
-		raise ImportError, "NetworkX required."
+		raise ImportError("NetworkX required.")
 
 	pathG = nx.Graph()
 	
@@ -298,10 +299,10 @@ def output_graphmetrics(pathadd,paths,file_name,data_dir):
 	ncols = len(pathadd[0])
 	
 	# Now loop through pathadd rows 
-	for irow in xrange(nrows):
+	for irow in range(nrows):
 		
 		# Begin loop through pathadd columns
-		for icol in xrange(ncols):
+		for icol in range(ncols):
 			
 			# Skip -9999. values
 			if pathadd[irow][icol] != -9999.0:
@@ -709,14 +710,14 @@ def output_graphmetrics(pathadd,paths,file_name,data_dir):
 	
 	# Calculate properties from path lengths: min, max, average
 	pathlen = []
-	for i in xrange(len(paths)):
+	for i in range(len(paths)):
 		pathlen.append(paths[i][2])
 	
 	# Create file to write info to
 	try:
 		fout = open(data_dir+file_name, 'w')
 	except(IOerror,OSerror) as e:
-		print("UNICOROutputs  %s, error%s"(filename,e))
+		print("UNICOROutputs  %s, error%s",(filename,e))
 		sys.exit(-1)
 		
 	# Write header information

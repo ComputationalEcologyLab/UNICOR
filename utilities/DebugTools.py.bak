@@ -11,12 +11,12 @@ import pdb
 try:
 	import sys, os
 except ImportError as eMsg:
-	print(("ImportError: (%s) OS and SYS required!"%(eMsg)))
+	print("ImportError: (%s) OS and SYS required!"%(eMsg))
 	sys.exit(-1)
 try:
 	import numpy as np
 except ImportError as eMsg:
-	print(("ImportError (%s) Numpy required."%(eMsg)))
+	print("ImportError (%s) Numpy required."%(eMsg))
 	sys.exit(-1)
 	
 #For debugging purposes uncomment

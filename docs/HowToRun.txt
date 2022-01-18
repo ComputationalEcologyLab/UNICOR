@@ -1,0 +1,7 @@
+# Startup a node
+# salloc -p celhpc2 --cpus-per-task=24 --nodes=1 --ntasks=1 --mem=96000 --exclusive srun --pty bash
+# Activate the enviornment
+# source ~/anaconda3/bin/activate
+# Run UNICOR
+# python UNICOR.py spring0_aj1000.rip
+

@@ -1,14 +1,14 @@
 # -------------------------------------------------------------------------------------------------------------
 # UNICOR.py
 # Author(s): Erin L Landguth, Brian Hand, Joe Glassy
-# most recent revision: "2011-03-07T12:07:00MST"(jmg)
+# most recent revision: "2022-01-17T12:07:00MST"(ell)
 # originally created  : September 2009
 # ------------------------------------------------------------------------------------------------------
-appRele = "2019-12-05T13:20:00MDT"
+appRele = "2022-01-17T09:00:00MDT"
 appName = "UNICOR"
 # jmg corrected appVers tag to reflect actual software version (not SVNs, and not pending '1.0')
-appVers = "2.5.01"
-authorNames = "E.L. Landguth, B.K. Hand, J.M. Glassy"
+appVers = "3.0.00"
+authorNames = "E.L. Landguth, et al."
 
 # ----------------------------------------------------------
 # Global symbols, if any :))
@@ -30,7 +30,7 @@ import pdb
 try:
 	import os, sys                    
 except ImportError as eMsg:
-	print("ImportError: (%s) OS and SYS required!"%(eMsg))
+	print(("ImportError: (%s) OS and SYS required!"%(eMsg)))
 	import sys
 	sys.exit(-1)
 
@@ -53,7 +53,7 @@ if DEBUG_MODE:
 try:
 	import numpy as np                    
 except ImportError as eMsg:
-	print("ImportError (%s) Numpy required."%(eMsg))
+	print(("ImportError (%s) Numpy required."%(eMsg)))
 	sys.exit(-1)		
 
 # UNICOR functions
@@ -62,7 +62,7 @@ try:
 	from UNICORMaps import *
 	from UNICOROutputs import *
 except ImportError as eMsg:
-	print("ImportError: (%s) UNICORFun, UNICORMaps, and/or UNICOROutputs required."%(eMsg))
+	print(("ImportError: (%s) UNICORFun, UNICORMaps, and/or UNICOROutputs required."%(eMsg)))
 	print("NOTE: failure of deeper dependencies (missing scipy,networkx etc) can also trigger this error!")
 	sys.exit(-1)
 	
@@ -72,7 +72,7 @@ try:
 	from RipMgr import *
 	import FileIO
 except ImportError as eMsg:
-	print("ImportError: RipMgr module(from Lupine Logic Inc) and FileIO.py are required."%(eMsg)) 
+	print(("ImportError: RipMgr module(from Lupine Logic Inc) and FileIO.py are required."%(eMsg))) 
 
 def main(ripFilePath):
 #------------------------------------------------------------
@@ -84,7 +84,7 @@ def main(ripFilePath):
 	
 	# If .rip file does not exist
 	if not os.path.exists(ripFilePath):
-		print("Cannot find or open runtime inputs file(%s)"%(ripFilePath))
+		print(("Cannot find or open runtime inputs file(%s)"%(ripFilePath)))
 		sys.exit(-1)
 	
 	# --------------------------------------------------
@@ -100,7 +100,7 @@ def main(ripFilePath):
 	try:
 		logfHndl =open(logSessionPath,'w')
 	except (IOError,OSError) as eMsg:
-		print("Error (%s) opening session logfile(%s)"%(eMsg,logSessionPath))
+		print(("Error (%s) opening session logfile(%s)"%(eMsg,logSessionPath)))
 		sys.exit(-1)
 	
 	msgVerbose = True	
@@ -326,8 +326,8 @@ def main(ripFilePath):
 			stringpts_rev,visited_upper,EDthresholdans,num_of_pro \
 			,nWeightPairs,xvalues,yvalues,pathadd_upper,cd_matrix_upper,paths_upper,edge_type, \
 			edge_dist,transform_func,const_kernal_vol, vol_constant,nbhd_dist)
-			print('Parallel processing not implemented with directional cost calculations at this point')
-			sys.exit(-1)
+			#print('Parallel processing not implemented with directional cost calculations at this point')
+			#sys.exit(-1)
 		else:
 			tupSpaths = parallel_paths(logfHndl,nopoints,\
 			stringpts,visited,EDthresholdans,num_of_pro \
@@ -528,6 +528,6 @@ if __name__ == '__main__':
 		ripFilePath = sys.argv[1]
 		# If user did not specify .rip file
 	else:
-		print "User must specify input file name (e.g., at command line type UNICOR.py user_input.rip)."
+		print("User must specify input file name (e.g., at command line type UNICOR.py user_input.rip).")
 		sys.exit(-1)
 	main(ripFilePath)
